@@ -1,0 +1,93 @@
+
+<html ng-app="app">
+<head>
+  <!-- META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+  <title>Node/Angular Todo App</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style media="screen">
+  .material-icons.md-18 { font-size: 18px; }
+  .material-icons.md-24 { font-size: 24px; }
+  .material-icons.md-36 { font-size: 36px; }
+  .material-icons.md-48 { font-size: 48px; }
+  </style>
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="mainCtrl">
+  <section class="hero is-primary">
+    <div class="hero-head">
+      <h1>Hello World!</h1>
+    </div>
+    <div class="hero-foot">
+      <div class="container">
+        <div class="tabs is-boxed">
+          <ul>
+            <li class="is-active">
+              <a>
+                <i class="material-icons md-18">photo</i>
+                <span>Pictures</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="material-icons">music</i></span>
+                <span>Music</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <span class="icon is-small"><i class="material-icons">video</i></span>
+                <span>Videos</span>
+              </a>
+            </li>
+            <li>
+              <a>
+                <i class="material-icons md-18">insert_drive_file</i>
+                <span>Documents</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-one-quarter" ng-repeat="pic in pics">
+          <div class="card is-fullwidth">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="{{pic.urls.small}}" alt="" style="object-fit: cover;">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <a ng-click="upvote(pic)">
+                    <i  style="color:{{pic.color}};"
+                        class="material-icons md-36">
+                        favorite
+                    </i>
+                  </a>
+                </div>
+                <div class="media-content">
+                  <p class="title is-5">
+                    {{pic.user.first_name}} {{pic.user.last_name}}
+                  </p>
+                  <p class="subtitle is-6">
+                    <i>@{{pic.user.username}}</i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+  <script src="app.js"></script>
+  </html>
